@@ -9,6 +9,12 @@
 int main(void)
 {
     // Your code here 
-    
+    FILE *fp;
+    fp = fopen("text.txt", "w+");
+    if (fork() == 0) 
+        fprintf(fp, "%s %s %s %s", "We", "are", "in", "child");
+    else
+        fprintf(fp, "%s %s %s %s", "We", "are", "in", "parent");
+    fclose(fp);
     return 0;
 }
