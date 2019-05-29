@@ -9,6 +9,11 @@
 int main(void)
 {
     // Your code here
-
+    int x = 10;
+    if (fork() == 0) 
+        printf("Child has x = %d\n", ++x); 
+    else
+        printf("Parent has x = %d\n", --x); 
     return 0;
 }
+
