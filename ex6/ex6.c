@@ -32,7 +32,7 @@ int main()
         runtime += diff;
     }
     avgRuntime = runtime /number_iter;
-     printf("Average time it takes to make a system call is %f ns.\n", avgRuntime);
+    printf("Average time it takes to make a system call is %f ns.\n", avgRuntime);
 	
     return 0;
 }
