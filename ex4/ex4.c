@@ -17,9 +17,13 @@ int main(void)
         exit(1);
     } else if (rc == 0) {    // child process satisfies this branch
         // printf("hello, child here (pid: %d) \n", (int) getpid());
-        // execl("/bin/ls", NULL);
-        execle("/bin/ls", NULL);
+        // execle("/bin/ls", NULL);
+        // execl("/bin/ls", "ls", "-l" (char *) NULL);
+        // execl("/bin/ls", "ls", "-l" (char *) NULL);
         // execv("/bin/ls", NULL);
+
+        char *args[] = {"ls", "-l", NULL};
+        execvp("ls", args);
     } else {
         int wc = waitpid(rc, NULL, 0);    // `waitpid` call added here
         printf("hello, parent here (pid: %d) of child %d\n", (int) getpid(), rc);
