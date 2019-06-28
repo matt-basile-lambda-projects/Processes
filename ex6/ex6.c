@@ -20,7 +20,19 @@ and `clock_gettime()` should work just fine.
 
 int main()
 {
+    struct timespec start, end;
+    int avgRuntime, diff, runtime;
     // Your code here
-    
+    for(int i =1; i<= number_iter; i++)
+    {
+        clock_gettime(CLOCK_MONOTONIC, &start);	/* mark start time */
+        fprintf(stdout, "Secret Message, How long do you take? #%d.\n", i);
+        clock_gettime(CLOCK_MONOTONIC, &end);	/* mark the end time */
+        diff = BILLION * (end.tv_sec - start.tv_sec) + end.tv_nsec - start.tv_nsec;    
+        runtime += diff;
+    }
+    avgRuntime = runtime /number_iter;
+    printf("Average time it takes to make a system call is %f ns.\n", avgRuntime);
+	
     return 0;
 }
